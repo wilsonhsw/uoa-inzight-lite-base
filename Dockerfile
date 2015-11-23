@@ -10,7 +10,7 @@ FROM uoa-inzight-base:tom
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
-ENV R_PACKAGES '"iNZightMR", "iNZightTS", "iNZightRegression", "iNZightPlots", "GGally"'
+ENV R_PACKAGES '"iNZightMR", "iNZightTS", "iNZightRegression", "iNZightPlots", "GGally", "gpairs"'
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 RUN R -e "install.packages(c(${R_PACKAGES}), \
