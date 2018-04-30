@@ -18,10 +18,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
     && apt-get update -y -q \
     
     && apt-get install -y -q \
-                       libxml2-dev \
                        default-jdk \
                        libcurl4-openssl-dev \
-                       libcairo2-dev \
                        libv8-3.14-dev \
                        libgdal-dev \
                        libproj-dev \
@@ -33,6 +31,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
                        libjq-dev \
                        mesa-common-dev \
                        libglu1-mesa-dev \
+                       gfortran \
     
     && R -e "install.packages('RJSONIO', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
     && R -e "install.packages('iNZightMR', repos = 'http://r.docker.stat.auckland.ac.nz/R/')" \ 
@@ -59,7 +58,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
     && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 60 --slave /usr/bin/g++ g++ /usr/bin/g++-6 \ 
 
     && R CMD javareconf \
-    && R -e "install.packages(c('GGally', 'gpairs'), repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
+    && R -e "install.packages('GGally', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
+    && R -e "install.packages('gpairs', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
     && R -e "install.packages('xlsx', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 
     && R -e "install.packages('iNZightRegression', repos = 'http://r.docker.stat.auckland.ac.nz/R/')" \ 
@@ -68,7 +68,6 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
     && R -e "install.packages('iNZightPlots', repos = 'http://r.docker.stat.auckland.ac.nz/R/')" \
     && R -e "install.packages('iNZightMaps', repos = 'http://r.docker.stat.auckland.ac.nz/R/')" \ 
 
-    && apt-get install -y -q gfortran \
     && R -e "install.packages('sf', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 
     && R -e "install.packages('devtools', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
