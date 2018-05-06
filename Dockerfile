@@ -9,7 +9,7 @@ FROM scienceis/uoa-inzight-base:latest
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
-ENV BUILD_DATE "2018-04-29"
+ENV BUILD_DATE "2018-05-06"
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 
